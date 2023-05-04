@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/gateway")
+@RequestMapping("/api/v1/user")
 @SpringBootApplication
 public class DemoUserApplication {
 	@Autowired
@@ -20,6 +20,6 @@ public class DemoUserApplication {
 	@KafkaListener(topics = "authen_topic", groupId = "authen_service")
 	public void receive(String user) {
     System.out.println("user");
-		kafkaTemplate.send("authen_topic","this is dai from user service");
+		kafkaTemplate.send("user_topic","this is dai from user service");
 	}
 }
